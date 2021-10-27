@@ -11,7 +11,11 @@ public class Binary_Space_Partitioning {
 	
 	private int minimum;
 	
-	public Binary_Space_Partitioning(String[][] MAP, String WALL) {
+	public Binary_Space_Partitioning(String[][] MAP, String WALL ) {
+		this( MAP, WALL , 0 );
+	}
+	
+	public Binary_Space_Partitioning(String[][] MAP, String WALL , int minimum) {
 		if( !checkRect(MAP) )
 		{
 			System.out.println(" It is not Rectangle");
@@ -26,22 +30,39 @@ public class Binary_Space_Partitioning {
 		X = MAP.length;
 		Y = MAP[0].length;
 		wall = WALL;
+		this.minimum = minimum;
+	}
+	
+	public void init() {
+
+		partition( X , Y );
+		
+	}
+	
+	public String[][] getMAP(){
+		return this.map;
 	}
 	
 	private void partition(int x, int y) {
 		Random ran = new Random();
 		if(x <= y) 
 		{
-			int targetYgird = ran.nextInt( y-minimum ) + minimum;
-			for (int i = 0 ; i < y; i ++)
+			int max = y - minimum - ( (minimum > 0) ? 1 : 0 ) ;
+//			int targetYgird = ran.nextInt( ( max + 1 - minimum) ) + minimum;
+			int targetYgird = (int) ( Math.random() * max ) + minimum;
+			System.out.println("y : " + y + " max : " + max +  " minimum : " + minimum + " targetYgird : " + targetYgird);
+			for (int i = 0 ; i < x; i ++)
 			{
 				map[i][targetYgird] = wall;
 			}
 		}
 		else
 		{
-			int targetXgird = ran.nextInt( x-minimum ) + minimum;
-			for (int i = 0 ; i < x; i ++)
+			int max = x - minimum - ( (minimum > 0) ? 1 : 0 ) ;
+//			int targetXgird = ran.nextInt( ( max + 1 - minimum) ) + minimum;
+			int targetXgird = (int) ( Math.random() * max ) + minimum;
+			System.out.println("x : " + x + " max : " + max +  " minimum : " + minimum + " targetYgird : " + targetXgird);
+			for (int i = 0 ; i < y; i ++)
 			{
 				map[targetXgird][i] = wall;
 			}
@@ -61,12 +82,14 @@ public class Binary_Space_Partitioning {
 		int yLength = target.length;
 		int xLength = target[0].length;
 
-		if( yLength <= minimum ) 
+		if( yLength <= minimum*2 ) 
 		{
+			System.out.println(" yLength <= minimum*2 ");
 			return false;
 		}
-		else if ( xLength <= minimum )
+		else if ( xLength <= minimum*2 )
 		{
+			System.out.println(" xLength <= minimum*2 ");
 			return false;
 		}
 		
