@@ -50,7 +50,7 @@ public class Binary_Space_Partitioning {
 			int max = y - minimum - ( (minimum > 0) ? 1 : 0 ) ;
 //			int targetYgird = ran.nextInt( ( max + 1 - minimum) ) + minimum;
 			int targetYgird = (int) ( Math.random() * max ) + minimum;
-			System.out.println("y : " + y + " max : " + max +  " minimum : " + minimum + " targetYgird : " + targetYgird);
+//			System.out.println("y : " + y + " max : " + max +  " minimum : " + minimum + " targetYgird : " + targetYgird);
 			for (int i = 0 ; i < x; i ++)
 			{
 				map[i][targetYgird] = wall;
@@ -61,7 +61,7 @@ public class Binary_Space_Partitioning {
 			int max = x - minimum - ( (minimum > 0) ? 1 : 0 ) ;
 //			int targetXgird = ran.nextInt( ( max + 1 - minimum) ) + minimum;
 			int targetXgird = (int) ( Math.random() * max ) + minimum;
-			System.out.println("x : " + x + " max : " + max +  " minimum : " + minimum + " targetYgird : " + targetXgird);
+//			System.out.println("x : " + x + " max : " + max +  " minimum : " + minimum + " targetYgird : " + targetXgird);
 			for (int i = 0 ; i < y; i ++)
 			{
 				map[targetXgird][i] = wall;
