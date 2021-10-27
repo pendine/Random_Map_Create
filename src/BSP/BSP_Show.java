@@ -2,28 +2,31 @@ package BSP;
 
 public class BSP_Show {
 
-	public static String[][] TestMAP = new String[5][9];
-	
-	
+	public String[][] TestMAP;
+	private int minimum;
 	
 	public BSP_Show() {
 		this(5,9);
 	}
 	
 	public BSP_Show(int X, int Y) {
+		this( X , Y , 0);
+	}
+	
+	public BSP_Show(int X, int Y , int minimum) {
+		this.minimum = minimum;
 		TestMAP = new String[X][Y];
 	}
 	
 	
 	public void init() {
-		BSP_Show aa = new BSP_Show();
-		aa.mapInit(TestMAP , "□");
+		mapInit(TestMAP , "□");
 		
-		Binary_Space_Partitioning test = new Binary_Space_Partitioning(TestMAP, "■" , 1 );
+		Binary_Space_Partitioning test = new Binary_Space_Partitioning(TestMAP, "■" , minimum );
 		
 		test.init();
 		
-		aa.mapPrint(TestMAP);
+		mapPrint(TestMAP);
 
 	}
 	public void mapInit(String[][] map , String space) 

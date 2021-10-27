@@ -7,7 +7,7 @@ public class Main {
 	public static void main(String[] args) 
 	{
 		System.out.println("Program Start");
-		BSP_Show aa = new BSP_Show();
+		BSP_Show aa = new BSP_Show( 3 , 3 );
 		aa.init();
 	}
 		
